@@ -47,7 +47,7 @@ This becomes:
 Clone the repository:
 
 ```bash
-git clone <repository-url> ~/dotfiles
+git clone https://github.com/JiruGutema/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ```
 
