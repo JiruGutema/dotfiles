@@ -12,7 +12,7 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
-# append to the history file, don't overwrite it
+# append to the history file, don't overwrite it 
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
@@ -117,6 +117,56 @@ source ~/.local/share/blesh/ble.sh
 
 # If you want per-project envs, use direnv:
 # eval "$(direnv hook bash)"
+
+# ========================START OF IMPORTS ============================
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+# LM Studio CLI
+export PATH="$PATH:$HOME/.lmstudio/bin"
+
+# Go and user-local bins
+export PATH=$PATH:/usr/local/go/bin
+# Created by `pipx`
+export PATH="$PATH:$HOME/.local/bin"
+
+# dotnet and go
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$HOME/.dotnet:$PATH
+export PATH=$PATH:$HOME/go/bin
+
+# history timestamp format (persisted)
+export HISTTIMEFORMAT="%F %T "
+
+# Flutter
+export PATH="$PATH:$HOME/flutter/flutter/bin"
+
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# opencode and user dir
+export PATH=$HOME/.opencode/bin:$PATH
+export PATH="$PATH:$HOME"
+export PATH="$PATH:/usr/share/code/bin"
+
+# Apache ant
+export ANT_HOME=/opt/apache-ant-1.9.1
+export PATH=$ANT_HOME/bin:$PATH
+
+# tools added by scripts
+export PATH="$HOME/.aspire/bin:$PATH"
+export PATH=$PATH:$HOME/.spicetify
+
+# X cursor settings for X sessions
+export XCURSOR_THEME="Yaru"
+export XCURSOR_SIZE=24
+# ========================END OF IMPORTS ============================
 # add clear at the end of loading
 clear
 # end of ~/.bashrc
