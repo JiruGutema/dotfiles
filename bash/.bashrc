@@ -117,7 +117,6 @@ source ~/.local/share/blesh/ble.sh
 
 # If you want per-project envs, use direnv:
 # eval "$(direnv hook bash)"
-
-# clear the extra space coming from git style
+# add clear at the end of loading
 clear
 # end of ~/.bashrc

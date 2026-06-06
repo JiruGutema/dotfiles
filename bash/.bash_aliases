@@ -16,6 +16,14 @@ export PS1="\[\e[1;32m\]\u@\h \[\e[38;5;117m\]\w\[\e[0m\]\[\033[33m\]\$(parse_gi
 echo -e '\e[5 q'
 alias batteryreport="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias ll='ls -alF'    
+alias la='ls -A'
+alias l='ls -CF' 
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....="cd ../../.."
