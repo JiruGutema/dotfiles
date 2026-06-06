@@ -102,6 +102,20 @@ stow nvim
 * `nvim` — Neovim configuration
 * `zellij` — Zellij terminal workspace configuration
 
+### Requirements for neovim
+
+- Neovim ≥ 0.10
+- Node.js ≥ 18 (required for Copilot and several LSP servers)
+- Git
+- A Nerd Font (recommended: FiraCode Nerd Font or JetBrainsMono Nerd Font)
+
+## Keybindings
+
+Original Lazyvim keybindings are used for most operations.
+
+- <http://www.lazyvim.org/keymaps>
+- key bindingings can be found under config/keymaps.lua
+
 ## Notes
 
 * Stow manages symlinks only.
