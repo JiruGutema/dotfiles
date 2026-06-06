@@ -20,10 +20,10 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....="cd ../../.."
 alias c="clear"
-alias des="cd /home/jiren/Desktop"
+alias des="cd $HOME/Desktop"
 alias ze="zellij"
-alias dev="cd /home/jiren/development"
-alias down="cd /home/jiren/Downloads"
+alias dev="cd $HOME/development"
+alias down="cd $HOME/Downloads"
 alias shut="poweroff"
 alias e="exit"
 alias gc="git commit -m"
@@ -31,7 +31,7 @@ alias ga="git add"
 alias gpu="git pull origin"
 alias gp='git push origin'
 alias media="/media/jiren/"
-alias killPort="/home/jiren/killPort.sh"
+alias killPort="$HOME/killPort.sh"
 alias sus="systemctl suspend -i"
 alias ls="lsd"
 alias hibernate="sudo systemctl hibernate"
@@ -39,13 +39,13 @@ alias reload="source ~/.bashrc"
 alias ibeam="echo -e '\e[5 q'"
 alias python="python3"
 alias py="python3"
-alias share="killPort 1234 && cd /home/jiren/development/FileSharing\ Hub && node index.js"
+alias share="killPort 1234 && cd \"$HOME/development/FileSharing Hub\" && node index.js"
 alias deleteRemote="git push origin --delete"
 alias deleteLocal="git branch -D"
 alias gitrev="git reset --soft HEAD~1"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias createHotSpot="wihotspot"
-alias musia="nohup /home/jiren/musializer/build/musializer > /dev/null 2>&1 &"
+alias musia="nohup $HOME/musializer/build/musializer > /dev/null 2>&1 &"
 alias startService="sudo systemctl start"
 alias stopService="sudo systemctl start"
 alias flushNeighbor="sudo ip neigh flush all"
@@ -58,4 +58,4 @@ restartTouchpad() {
 }
 
 alias ant-openelis='JAVA_HOME=/opt/jdk1.7.0_80 PATH=/opt/jdk1.7.0_80/bin:$PATH ant'
-alias pms='cd /home/jiren/development/OSTA_PMS'
+alias pms="cd $HOME/development/OSTA_PMS"

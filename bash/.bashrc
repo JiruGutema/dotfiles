@@ -7,6 +7,7 @@ case $- in
 *i*) ;;
 *) return ;;
 esac
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -21,10 +22,6 @@ HISTFILESIZE=2000
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
-
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -70,39 +67,20 @@ xterm* | rxvt*)
 *) ;;
 esac
 
-# enable color support of ls and also add handy aliases
+# enable color support for LS definitions via dircolors
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
-  alias dir='dir --color=auto'
-  alias vdir='vdir --color=auto'
-
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
+  # Aliases moved to ~/.bash_aliases (keeps ~/.bashrc small)
 fi
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
+# You can put interactive-only aliases and functions in ~/.bash_aliases
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
-
 fi
 
-clear
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -113,46 +91,14 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
 shopt -s nocaseglob
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/home/jiren/.lmstudio/bin"
-# End of LM Studio CLI section
-
-export PATH=$PATH:/usr/local/go/bin
-
-# Created by `pipx` on 2025-10-18 18:34:27
-export PATH="$PATH:/home/jiren/.local/bin"
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)
-
-export DOTNET_ROOT=$HOME/.dotnet
-export PATH=$HOME/.dotnet:$PATH
-export PATH=$PATH:$HOME/go/bin
-export HISTTIMEFORMAT="%F %T "
-export PATH="$PATH:$HOME/flutter/flutter/bin"
-# pnpm
-export PNPM_HOME="/home/jiren/.local/share/pnpm"
-case ":$PATH:" in
-*":$PNPM_HOME:"*) ;;
-*) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# opencode
-export PATH=/home/jiren/.opencode/bin:$PATH
-export PATH="$PATH:/home/jiren"
-
-# ---------------------------------
-# rbenv (Ruby version manager)
-# ---------------------------------
+# rbenv init (moved to profile if you prefer system-wide; keep here or in ~/.profile)
 if command -v rbenv >/dev/null 2>&1; then
   eval "$(rbenv init - zsh)"
 fi
+
 docker-rm-search() {
   if [ -z "$1" ]; then
     echo "Usage: docker-rm-search <keyword>"
@@ -165,34 +111,11 @@ docker-rm-search() {
     xargs -r docker rmi -f
 }
 
-# Java 7
-# export JAVA_HOME=/opt/jdk1.7.0_80
-# export PATH=$JAVA_HOME/bin:$PATH
-
-# Apache ant
-export ANT_HOME=/opt/apache-ant-1.9.1
-export PATH=$ANT_HOME/bin:$PATH
-
-export PATH="$PATH:/home/jiren"
-export PATH="$PATH:/usr/share/code/bin"
+# interactive-only helper and shell extensions
+# ble.sh and other interactive hooks (keep in ~/.bashrc)
 source ~/.local/share/blesh/ble.sh
 
-# append to history, don’t overwrite
-shopt -s histappend
+# If you want per-project envs, use direnv:
+# eval "$(direnv hook bash)"
 
-# save multi-line commands as one
-shopt -s cmdhist
-
-# increase history size
-HISTSIZE=10000
-HISTFILESIZE=20000
-
-# remove duplicates
-HISTCONTROL=ignoredups:erasedups
-
-# Added by get-aspire-cli.sh
-export PATH="$HOME/.aspire/bin:$PATH"
-
-export PATH=$PATH:/home/jiren/.spicetify
-export XCURSOR_THEME="Yaru"
-export XCURSOR_SIZE=24
+# end of ~/.bashrc
