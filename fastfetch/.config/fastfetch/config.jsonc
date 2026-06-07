@@ -2,22 +2,29 @@
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
         "type": "builtin",
-        "height": 15,
+        "height": 18,
         "width": 30,
         "padding": {
-            "top": 5,
-            "left": 3
+            "top": 2,
+            "left": 3,
+            "right": 3
         }
+    },
+    "display": {
+        "separator": "  ",
+        "constants": [
+            "──────────────────────" // Used to easily align boxes if you ever want to change widths
+        ]
     },
     "modules": [
         "break",
         {
             "type": "custom",
-            "format": "\u001b[90m┌──────────────────────Hardware──────────────────────┐"
+            "format": "\u001b[90m┌──────────────────────\u001b[1;32mHardware\u001b[0;90m──────────────────────┐"
         },
         {
             "type": "host",
-            "key": "󰌢  PC",
+            "key": "󰌢 ",
             "keyColor": "green"
         },
         {
@@ -33,12 +40,20 @@
         {
             "type": "memory",
             "key": "│ ├󰑭 ",
-            "keyColor": "green"
+            "keyColor": "green",
+            "format": "{1} / {2} ({3})"
         },
         {
             "type": "disk",
-            "key": "└ └󰋊 ",
-            "keyColor": "green"
+            "key": "│ ├󰋊 ",
+            "keyColor": "green",
+            "format": "{1} / {2} ({3})"
+        },
+        {
+            "type": "battery",
+            "key": "└ └󰁹 ",
+            "keyColor": "green",
+            "format": "{4}% [{5}]"
         },
         {
             "type": "custom",
@@ -47,21 +62,16 @@
         "break",
         {
             "type": "custom",
-            "format": "\u001b[90m┌──────────────────────Software──────────────────────┐"
+            "format": "\u001b[90m┌──────────────────────\u001b[1;33mSoftware\u001b[0;90m──────────────────────┐"
         },
         {
             "type": "os",
-            "key": "  OS",
+            "key": " ",
             "keyColor": "yellow"
         },
         {
             "type": "kernel",
             "key": "│ ├󰌽 ",
-            "keyColor": "yellow"
-        },
-        {
-            "type": "bios",
-            "key": "│ ├󰖡 ",
             "keyColor": "yellow"
         },
         {
@@ -74,15 +84,18 @@
             "key": "└ └󰞷 ",
             "keyColor": "yellow"
         },
+        {
+            "type": "custom",
+            "format": "\u001b[90m└────────────────────────────────────────────────────┘"
+        },
         "break",
         {
-            "type": "de",
-            "key": "󰧨  DE",
-            "keyColor": "blue"
+            "type": "custom",
+            "format": "\u001b[90m┌───────────────────────\u001b[1;34mDesktop\u001b[0;90m──────────────────────┐"
         },
         {
-            "type": "lm",
-            "key": "│ ├󰍁 ",
+            "type": "de",
+            "key": "󰧨 ",
             "keyColor": "blue"
         },
         {
@@ -91,13 +104,23 @@
             "keyColor": "blue"
         },
         {
-            "type": "wmtheme",
+            "type": "theme",
             "key": "│ ├󰉦 ",
             "keyColor": "blue"
         },
         {
+            "type": "icons",
+            "key": "│ ├󰀻 ",
+            "keyColor": "blue"
+        },
+        {
             "type": "terminal",
-            "key": "└ └󰆍 ",
+            "key": "│ ├󰆍 ",
+            "keyColor": "blue"
+        },
+        {
+            "type": "terminalfont",
+            "key": "└ └󰛖 ",
             "keyColor": "blue"
         },
         {
@@ -107,31 +130,57 @@
         "break",
         {
             "type": "custom",
-            "format": "\u001b[90m┌────────────────────Uptime / Age / DT────────────────────┐"
+            "format": "\u001b[90m┌───────────────────────\u001b[1;36mNetwork\u001b[0;90m──────────────────────┐"
+        },
+        {
+            "type": "localip",
+            "key": "󰩟 ",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "publicip",
+            "key": "│ ├󰩠 ",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "wifi",
+            "key": "└ └󰤨 ",
+            "keyColor": "cyan"
+        },
+        {
+            "type": "custom",
+            "format": "\u001b[90m└────────────────────────────────────────────────────┘"
+        },
+        "break",
+        {
+            "type": "custom",
+            "format": "\u001b[90m┌────────────────────────\u001b[1;35mStatus\u001b[0;90m──────────────────────┐"
         },
         {
             "type": "command",
-            "key": "  ›  OS Age  ",
+            "key": "󰔚 ",
             "keyColor": "magenta",
             "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
         },
         {
             "type": "uptime",
-            "key": "  ›  Uptime  ",
+            "key": "│ ├󰅐 ",
             "keyColor": "magenta"
         },
         {
             "type": "datetime",
-            "key": "  ›  DateTime  ",
-            "keyColor": "magenta"
+            "key": "└ └󰃰 ",
+            "keyColor": "magenta",
+            "format": "{1}-{3}-{11} {14}:{17}"
         },
         {
             "type": "custom",
-            "format": "\u001b[90m└─────────────────────────────────────────────────────────┘"
+            "format": "\u001b[90m└────────────────────────────────────────────────────┘"
         },
+        "break",
         {
             "type": "colors",
-            "paddingLeft": 2,
+            "paddingLeft": 16,
             "symbol": "circle"
         }
     ]
