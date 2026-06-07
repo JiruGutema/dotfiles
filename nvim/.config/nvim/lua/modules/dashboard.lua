@@ -57,8 +57,6 @@ local function fetch_stats()
 			stats.processes = tostring(item.result)
 		elseif item.type == "LocalIp" and item.result and item.result[1] then
 			stats.local_ip = item.result[1].ipv4
-		elseif item.type == "Uptime" and item.result then
-			stats.uptime = item.result.bootTime
 		end
 	end
 
@@ -71,27 +69,21 @@ local function gen_graph(percent, width)
 	if not percent or percent ~= percent then
 		percent = 0
 	end
+	if percent < 0 then
+		percent = 0
+	elseif percent > 100 then
+		percent = 100
+	end
 	width = width or 20
 
-	local start_empty, start_filled = "", ""
-	local mid_empty, mid_filled = "", ""
-	local end_empty, end_filled = "", ""
-
-	if percent <= 0 then
-		return start_empty .. string.rep(mid_empty, width - 2) .. end_empty
-	end
-	if percent >= 100 then
-		return start_filled .. string.rep(mid_filled, width - 2) .. end_filled
+	local filled = math.floor((percent / 100) * width + 0.5)
+	if filled > width then
+		filled = width
 	end
 
-	local filled = math.floor((percent / 100) * width)
-	filled = math.max(0, math.min(filled, width - 1))
-
-	if filled == 0 then
-		return start_empty .. string.rep(mid_empty, width - 2) .. end_empty
-	end
-
-	return start_filled .. string.rep(mid_filled, filled - 1) .. string.rep(mid_empty, width - filled - 1) .. end_empty
+	-- Block elements render single-width in every monospace/terminal font,
+	-- so the bar is always exactly `width` columns wide.
+	return string.rep("█", filled) .. string.rep("░", width - filled)
 end
 
 local function wsl_version()
@@ -226,30 +218,6 @@ local function disk()
 	return math.floor(tonumber(used or 0) + 0.5), math.floor(tonumber(total or 1) + 0.5)
 end
 
-local function uptime()
-	if ff_stats and ff_stats.uptime then
-		return ff_stats.uptime:sub(1, 19):gsub("T", " ")
-	end
-
-	local boot_time, boot_date
-
-	if system_type ~= "darwin" then
-		boot_date = utils.term_cmd("uptime -s")
-		local y, m, d = boot_date:match("(%d+)-(%d+)-(%d+)")
-		boot_time = os.time({ year = y, month = m, day = d })
-	else
-		local boot_sec = utils.term_cmd("sysctl -n kern.boottime"):match("sec%s*=%s*(%d+)")
-		boot_time = tonumber(boot_sec)
-		boot_date = os.date("%Y-%m-%d %H:%M:%S", boot_time)
-	end
-
-	local current_time = os.time(os.date("*t"))
-	local days_since_boot = math.floor(os.difftime(current_time, boot_time) / 86400)
-	local uptime_percentage = math.min(days_since_boot / 14, 1) * 100
-
-	return boot_date, uptime_percentage
-end
-
 local function battery_capacity()
 	if ff_stats and ff_stats.battery_capacity then
 		return math.floor(ff_stats.battery_capacity + 0.5)
@@ -363,50 +331,68 @@ local function public_ip_address()
 	return utils.term_cmd("curl -s4 ifconfig.me")
 end
 
--- RAM/DISK/UPTIME
+-- RAM/SWAP/DISK
 local ram_used, ram_total = ram()
 local ram_percent = ram_used / ram_total * 100
 local swap_used, swap_total = swap()
 local swap_percent = swap_used / swap_total * 100
 local disk_used, disk_total = disk()
 local disk_percent = disk_used / disk_total * 100
-local uptime_date, uptime_percent = uptime()
+
+-- Box interior: 8-col label column + 1-col divider + 41-col body column.
+local BODY_WIDTH = 41
+
+-- Display width in terminal columns. Nerd-font glyphs and block elements render
+-- single-width, so counting UTF-8 codepoints (every byte that is not a 0x80-0xBF
+-- continuation byte) matches what the terminal draws. LuaJIT lacks the `utf8`
+-- stdlib, so the codepoints are counted by hand.
+local function disp_width(str)
+	local count = 0
+	for i = 1, #str do
+		local byte = string.byte(str, i)
+		if byte < 0x80 or byte >= 0xC0 then
+			count = count + 1
+		end
+	end
+	return count
+end
+
+-- Pad a body string with trailing spaces to the exact interior width so the
+-- right border always lands in the same column.
+local function pad_body(body)
+	local width = disp_width(body)
+	if width >= BODY_WIDTH then
+		return body
+	end
+	return body .. string.rep(" ", BODY_WIDTH - width)
+end
+
+-- One labelled row: 8-col label cell, divider, then the padded body.
+local function box_row(label, body)
+	return "│" .. string.format(" %-7s", label) .. "│" .. pad_body(body) .. "│"
+end
+
+-- A stat row with a value and its bar gauge.
+local function gauge_row(label, value, percent)
+	return box_row(label, string.format(" %-16s %s ", value, gen_graph(percent)))
+end
+
+-- Users / processes / local IP: count on the left, IP pinned to the right.
+local user_count = utils.term_cmd("users | tr ' ' '\\n' | sort -u | wc -l | tr -d ' '")
+local class = utils.in_yadm_env(function()
+	return utils.term_cmd("git config local.class")
+end)
+local info_left = " " .. user_count .. (class ~= "" and ("  " .. class) or "") .. "    " .. processes()
+local info_right = "󰩠 " .. local_ip_address() .. " "
+local info_gap = math.max(1, BODY_WIDTH - disp_width(info_left) - disp_width(info_right))
+local info_body = info_left .. string.rep(" ", info_gap) .. info_right
 
 local system_info = {
 	"╭────────┬─────────────────────────────────────────╮",
-	string.format("│ CPU    │ %-16s %s │", cpu_load .. "%", " " .. gen_graph(cpu_load)),
-	string.format(
-		"│ RAM    │ %-16s %s │",
-		ram_used .. "/" .. ram_total .. "GB",
-		" " .. gen_graph(ram_percent)
-	),
-	string.format(
-		"│ SWAP   │ %-16s %s │",
-		swap_used .. "/" .. swap_total .. "GB",
-		"󰯍 " .. gen_graph(swap_percent)
-	),
-	string.format(
-		"│ DISK   │ %-16s %s │",
-		disk_used .. "/" .. disk_total .. "GB",
-		" " .. gen_graph(disk_percent)
-	),
-	string.format(
-		"│ UPTIME │ %-21s %3d%% %s %s │",
-		uptime_date,
-		battery_capacity(),
-		battery_icon(battery_capacity(), battery_status()),
-		gen_graph(battery_capacity(), 10)
-	),
-	string.format(
-		"│  │ %-15s %8s %21s │",
-		utils.term_cmd("users | tr ' ' '\\n' | sort -u | wc -l | tr -d ' '")
-			.. "  "
-			.. utils.in_yadm_env(function()
-				return utils.term_cmd("git config local.class")
-			end),
-		" " .. processes(),
-		"󰩠 " .. local_ip_address()
-	),
+	gauge_row("CPU", cpu_load .. "%", cpu_load),
+	gauge_row("RAM", ram_used .. "/" .. ram_total .. "GB", ram_percent),
+	gauge_row("SWAP", swap_used .. "/" .. swap_total .. "GB", swap_percent),
+	gauge_row("DISK", disk_used .. "/" .. disk_total .. "GB", disk_percent),
 	"╰────────┴─────────────────────────────────────────╯",
 }
 
