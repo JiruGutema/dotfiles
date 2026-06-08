@@ -7,11 +7,6 @@ alias scr="~/mobileTool/scrcpy-linux-v3.0/scrcpy"
 alias start-emulator="emulator -avd Pixel_6a -gpu host & disown"
 alias stop-emulator="adb emu kill || pkill -f emulator"
 
-parse_git_branch() {
-  git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-
-export PS1="\[\e[1;32m\]\u@\h \[\e[38;5;117m\]\w\[\e[0m\]\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 
 echo -e '\e[5 q'
 alias batteryreport="upower -i /org/freedesktop/UPower/devices/battery_BAT0"

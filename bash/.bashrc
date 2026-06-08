@@ -166,6 +166,11 @@ export PATH=$PATH:$HOME/.spicetify
 # X cursor settings for X sessions
 export XCURSOR_THEME="Yaru"
 export XCURSOR_SIZE=24
+
+# Startship git information
+eval "$(starship init bash)"
+
+
 # ========================END OF IMPORTS ============================
 # add clear at the end of loading
 clear
