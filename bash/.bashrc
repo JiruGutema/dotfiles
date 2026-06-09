@@ -175,3 +175,4 @@ eval "$(starship init bash)"
 # add clear at the end of loading
 clear
 # end of ~/.bashrc
+export PATH="$PATH:/opt/mssql-tools18/bin"
