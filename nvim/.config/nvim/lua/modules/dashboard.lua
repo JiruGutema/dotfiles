@@ -112,7 +112,7 @@ local function os_version()
 
 		local icon = "" -- default Linux icon
 		if linux_name:find("ubuntu") then
-			icon = ""
+			icon = "🐧"
 		elseif linux_name:find("debian") then
 			icon = ""
 		elseif linux_name:find("arch") then
@@ -218,85 +218,6 @@ local function disk()
 	return math.floor(tonumber(used or 0) + 0.5), math.floor(tonumber(total or 1) + 0.5)
 end
 
-local function battery_capacity()
-	if ff_stats and ff_stats.battery_capacity then
-		return math.floor(ff_stats.battery_capacity + 0.5)
-	end
-
-	local output = utils.term_cmd([[
-		for d in /sys/class/power_supply/*; do
-			case "$d" in */BAT*|*/CMD*|*/battery*)
-				[ -f "$d/capacity" ] && cat "$d/capacity" && exit
-			esac
-		done
-		pmset -g batt | grep -Eo '\d+%' | head -1 | tr -d '%'
-	]])
-	return tonumber(output and output:match("%d+")) or 0
-end
-
-local function battery_status()
-	if ff_stats and ff_stats.battery_status then
-		-- fastfetch reports status as a string ("AC Connected") on newer
-		-- versions and as an array of strings on older ones; handle both.
-		local statuses = ff_stats.battery_status
-		if type(statuses) == "string" then
-			statuses = { statuses }
-		end
-		for _, s in ipairs(statuses) do
-			if s == "Charging" or s == "AC Connected" then
-				return true
-			end
-		end
-		return false
-	end
-	if system_type ~= "darwin" then
-		local status = utils.term_cmd([[
-      (for d in /sys/class/power_supply/*; do
-        case "$d" in */BAT*|*/CMD*|*/battery*)
-          [ -f "$d/status" ] && cat "$d/status" && break
-        esac
-      done) || pmset -g batt | grep 'AC Power'
-    ]])
-
-		if not status then
-			return false
-		end
-		return status and status:match("Charging") or status:match("AC Power") or false
-	else
-		local status = utils.term_cmd("pmset -g batt")
-		if not status then
-			return false
-		end
-
-		return status and status:match(" charging") or status:match("AC Power") or false
-	end
-end
-
-local function battery_icon(capacity, battery_stat)
-	if battery_stat then
-		return "󰂄"
-	end
-
-	local index = math.floor(capacity / 10) + 1
-	local capacity_icons = {
-		"󰂎",
-		"󰁺",
-		"󰁻",
-		"󰁼",
-		"󰁽",
-		"󰁾",
-		"󰁿",
-		"󰂀",
-		"󰂁",
-		"󰂂",
-		"󰁹",
-	}
-	if index > #capacity_icons then
-		index = #capacity_icons
-	end
-	return capacity_icons[index]
-end
-
 local function processes()
 	if ff_stats and ff_stats.processes then
 		return ff_stats.processes
@@ -323,13 +244,6 @@ local function local_ip_address()
 	return ip ~= "" and ip or "N/A"
 end
 
-local function public_ip_address()
-	if ff_stats and ff_stats.public_ip then
-		return ff_stats.public_ip
-	end
-
-	return utils.term_cmd("curl -s4 ifconfig.me")
-end
 
 -- RAM/SWAP/DISK
 local ram_used, ram_total = ram()
