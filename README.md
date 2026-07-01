@@ -4,8 +4,8 @@ Personal Linux development environment managed with Git and GNU Stow.
 
 ## Requirements
 
-* Git
-* GNU Stow
+- Git
+- GNU Stow
 
 ### Ubuntu
 
@@ -63,7 +63,37 @@ Or stow all packages:
 stow */
 ```
 
-## Updating
+## Adding new Packages
+
+First move the configuration files to a new package directory. For example, to add a new package called `.config/custom` that lives under your home directory, do the following:
+
+1. Move the configuration files to `dotfiles/custom/.config/custom/`
+2. Then run the following command to create symlinks:
+
+   ```bash
+   stow custom
+   ```
+
+3. verify that the symlinks were created correctly:
+
+   ```bash
+   ls -l ~/.config/custom
+   ```
+
+4. Update your repository with the new package if you have set up a remote repository:
+
+## Adding new packages that exist in the home directory
+
+If you already have a configuration file on your system and want to avoid moving it manually, you can use the --adopt flag. This tells Stow to automatically move the existing file into your dotfiles directory and create the symlink.
+
+<!-- WARNING: Make sure you have your configuration backed up with Git before doing this, as --adopt will instantly stage and link the file. -->
+
+```bash
+cd ~/dotfiles
+stow --adopt <package_name>
+```
+
+## Updating a Packages
 
 Edit configuration files normally through their locations in `$HOME`:
 
@@ -97,10 +127,11 @@ stow nvim
 
 ## Common Packages
 
-* `bash` — Bash configuration and aliases
-* `git` — Git configuration
-* `nvim` — Neovim configuration
-* `zellij` — Zellij terminal workspace configuration
+- `bash` — Bash configuration and aliases
+- `git` — Git configuration
+- `nvim` — Neovim configuration
+- `zellij` — Zellij terminal workspace configuration
+- `tmux` — Tmux confifguration
 
 ### Requirements for neovim
 
@@ -118,6 +149,16 @@ Original Lazyvim keybindings are used for most operations.
 
 ## Notes
 
-* Stow manages symlinks only.
-* Existing files may need to be moved or backed up before stowing.
-* Package directories should mirror the target directory structure in `$HOME`.
+- Stow manages symlinks only.
+- Existing files may need to be moved or backed up before stowing.
+- Package directories should mirror the target directory structure in `$HOME`.
+- For tmux, make sure you have installed tpm (Tmux Plugin Manager) 
+
+## Apps that are their configs included in this dotfiles repository
+
+1. [Neovim](https://neovim.io/)
+2. [Fastfetch](https://github.com/fastfetch-cli/fastfetch)
+3. [Starship](https://starship.rs/)
+4. [Tmux](https://github.com/tmux/tmux/wiki)
+5. [Zellij](https://zellij.dev/)
+6. `Bash | Terminal` 😜
