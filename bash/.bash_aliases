@@ -57,5 +57,4 @@ restartTouchpad() {
 }
 alias ant-openelis='JAVA_HOME=/opt/jdk1.7.0_80 PATH=/opt/jdk1.7.0_80/bin:$PATH ant'
 alias pms="cd $HOME/development/OSTA_PMS"
-alias tmux="zellij"
 alias mereb="cd $HOME/development/Mereb/"

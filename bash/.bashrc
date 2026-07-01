@@ -176,3 +176,8 @@ eval "$(starship init bash)"
 clear
 # end of ~/.bashrc
 export PATH="$PATH:/opt/mssql-tools18/bin"
+
+# >>> grok installer >>>
+export PATH="$HOME/.grok/bin:$PATH"
+[[ -r "$HOME/.grok/completions/bash/grok.bash" ]] && source "$HOME/.grok/completions/bash/grok.bash"
+# <<< grok installer <<<
