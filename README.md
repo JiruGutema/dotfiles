@@ -154,7 +154,7 @@ Original Lazyvim keybindings are used for most operations.
 - Package directories should mirror the target directory structure in `$HOME`.
 - For tmux, make sure you have installed tpm (Tmux Plugin Manager) 
 
-## Apps that are their configs included in this dotfiles repository
+## Apps that are their configs are included in this dotfiles repository
 
 1. [Neovim](https://neovim.io/)
 2. [Fastfetch](https://github.com/fastfetch-cli/fastfetch)
