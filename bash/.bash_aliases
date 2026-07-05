@@ -1,4 +1,3 @@
-alias cat="batcat"
 
 alias copy="xclip -selection clipboard"
 alias gni="~/mobileTool/gnirehtet run"
