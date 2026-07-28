@@ -125,6 +125,18 @@ Restow it:
 stow nvim
 ```
 
+## for firefox styles
+
+Please run the following to stow for snap firefox:
+
+```
+cd ~/dotfiles
+stow -t /home/jiren/snap/firefox/common firefox
+```
+
+Note: please check your firefox profile first. you can get one by going to
+`about:support` and then opening the folder.
+
 ## Common Packages
 
 - `bash` — Bash configuration and aliases
@@ -152,7 +164,7 @@ Original Lazyvim keybindings are used for most operations.
 - Stow manages symlinks only.
 - Existing files may need to be moved or backed up before stowing.
 - Package directories should mirror the target directory structure in `$HOME`.
-- For tmux, make sure you have installed tpm (Tmux Plugin Manager) 
+- For tmux, make sure you have installed tpm (Tmux Plugin Manager)
 
 ## Apps that are their configs are included in this dotfiles repository
 
