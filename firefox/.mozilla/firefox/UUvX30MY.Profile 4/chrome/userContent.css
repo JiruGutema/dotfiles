@@ -1,5 +1,16 @@
+/* for new tab or home page customization */
 @-moz-document url("about:home"), url("about:newtab") {
-  .search-wrapper .search-handoff-button {
+  .search-handoff-button {
+    border-radius: 4px !important;
+  }
+
+  .widget-wrapper article {
+    border-radius: 4px !important;
+  }
+}
+
+@-moz-document url("about:preferences") {
+  moz-card {
     border-radius: 4px !important;
   }
 }

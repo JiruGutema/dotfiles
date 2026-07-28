@@ -1,3 +1,4 @@
+/* for firefox part like tab, buttons customazition */
 /* Global Border Radius Variables */
 :root {
   --arrowpanel-border-radius: 4px !important;
@@ -12,20 +13,20 @@
 }
 
 /* Address Bar / URL Bar drop-down */
-#urlbar-background, 
+#urlbar-background,
 #searchbar {
   border-radius: 4px !important;
 }
 
 /* Menus, Popups, and Context Menus */
-panel, 
-menupopup, 
+panel,
+menupopup,
 .panel-arrowcontent {
   border-radius: 4px !important;
 }
 
 /* Buttons inside toolbars and menus */
-toolbarbutton, 
+toolbarbutton,
 .panel-subview-body {
   border-radius: 4px !important;
 }
@@ -33,13 +34,5 @@ toolbarbutton,
 /* Sidebar elements */
 #sidebar-box {
   border-radius: 4px !important;
-}
-.widget-wrapper {
- border-radius: 4px !important;
-}
-
-/* google search bar */
-.search-wrapper .search-handoff-button {
-border-radius: 4px !important;
 }
 /* add more here whatever rule you want to be included */
