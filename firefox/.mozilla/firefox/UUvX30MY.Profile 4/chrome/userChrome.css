@@ -1,38 +1,38 @@
 /* for firefox part like tab, buttons customazition */
 /* Global Border Radius Variables */
 :root {
-  --arrowpanel-border-radius: 4px !important;
-  --button-border-radius: 4px !important;
-  --toolbarbutton-border-radius: 4px !important;
-  --urlbar-border-radius: 4px !important;
+  --arrowpanel-border-radius: 6px !important;
+  --button-border-radius: 6px !important;
+  --toolbarbutton-border-radius: 6px !important;
+  --urlbar-border-radius: 6px !important;
 }
 
 /* Tabs */
 .tab-background {
-  border-radius: 4px !important;
+  border-radius: 6px !important;
 }
 
 /* Address Bar / URL Bar drop-down */
 #urlbar-background,
 #searchbar {
-  border-radius: 4px !important;
+  border-radius: 6px !important;
 }
 
 /* Menus, Popups, and Context Menus */
 panel,
 menupopup,
 .panel-arrowcontent {
-  border-radius: 4px !important;
+  border-radius: 6px !important;
 }
 
 /* Buttons inside toolbars and menus */
 toolbarbutton,
 .panel-subview-body {
-  border-radius: 4px !important;
+  border-radius: 6px !important;
 }
 
 /* Sidebar elements */
 #sidebar-box {
-  border-radius: 4px !important;
+  border-radius: 6px !important;
 }
 /* add more here whatever rule you want to be included */
