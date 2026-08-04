@@ -5,6 +5,8 @@
   --button-border-radius: 6px !important;
   --toolbarbutton-border-radius: 6px !important;
   --urlbar-border-radius: 6px !important;
+  margin: 0px !important;
+  padding: 0px !important;
 }
 
 /* Tabs */

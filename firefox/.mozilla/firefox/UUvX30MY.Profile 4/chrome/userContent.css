@@ -14,3 +14,13 @@
     border-radius: 4px !important;
   }
 }
+
+@-moz-document {
+  moz-button {
+    border-radius: 6px !important;
+  }
+}
+html {
+  margin: 0 !important;
+  padding: 0 !important;
+}
