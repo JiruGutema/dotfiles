@@ -4,7 +4,6 @@ alias gni="~/mobileTool/gnirehtet run"
 alias scr="~/mobileTool/scrcpy-linux-v3.0/scrcpy"
 
 
-echo -e '\e[5 q'
 alias batteryreport="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 
 alias dir='dir --color=auto'
@@ -32,21 +31,11 @@ alias gp='git push origin'
 alias media="/media/jiren/"
 alias killPort="$HOME/killPort.sh"
 alias sus="systemctl suspend -i"
-alias ls="lsd"
+# alias ls="lsd"
 alias hibernate="sudo systemctl hibernate"
-alias reload="source ~/.bashrc"
-alias ibeam="echo -e '\e[5 q'"
-alias python="python3"
-alias py="python3"
-alias share="killPort 1234 && cd \"$HOME/development/FileSharing Hub\" && node index.js"
 alias deleteRemote="git push origin --delete"
 alias deleteLocal="git branch -D"
 alias gitrev="git reset --soft HEAD~1"
-alias createHotSpot="wihotspot"
-alias musia="nohup $HOME/musializer/build/musializer > /dev/null 2>&1 &"
-alias startService="sudo systemctl start"
-alias stopService="sudo systemctl start"
-alias flushNeighbor="sudo ip neigh flush all"
 restartTouchpad() {
   sudo modprobe -r hid_multitouch
   sudo modprobe -r i2c_hid_acpi
@@ -54,6 +43,5 @@ restartTouchpad() {
   sudo modprobe hid_multitouch
 
 }
-alias ant-openelis='JAVA_HOME=/opt/jdk1.7.0_80 PATH=/opt/jdk1.7.0_80/bin:$PATH ant'
 alias pms="cd $HOME/development/OSTA_PMS"
 alias mereb="cd $HOME/development/Mereb/"
