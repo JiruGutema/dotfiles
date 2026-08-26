@@ -185,3 +185,4 @@ export PATH="$HOME/.grok/bin:$PATH"
 
 # Added by Antigravity CLI installer
 export PATH="/home/jiren/.local/bin:$PATH"
+. "$HOME/.cargo/env"
