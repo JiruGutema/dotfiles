@@ -1,5 +1,6 @@
 # Dotfiles
 
+Note: if you are trying to use hyperland, it's better if you install gnome (gdm3) first.
 Personal Linux development environment managed with Git and GNU Stow.
 
 ## Requirements
@@ -7,7 +8,7 @@ Personal Linux development environment managed with Git and GNU Stow.
 - Git
 - GNU Stow
 
-### Ubuntu
+### Debian
 
 ```bash
 sudo apt update
@@ -144,6 +145,9 @@ Note: please check your firefox profile first. you can get one by going to
 - `nvim` — Neovim configuration
 - `zellij` — Zellij terminal workspace configuration
 - `tmux` — Tmux confifguration
+- `hypr` — Hyprland tiling compositor (Omarchy aesthetic)
+- `waybar` — Waybar status bar (Tokyo Night Omarchy theme)
+- `wofi` — Wofi application launcher (Omarchy style)
 
 ### Requirements for neovim
 
@@ -165,12 +169,3 @@ Original Lazyvim keybindings are used for most operations.
 - Existing files may need to be moved or backed up before stowing.
 - Package directories should mirror the target directory structure in `$HOME`.
 - For tmux, make sure you have installed tpm (Tmux Plugin Manager)
-
-## Apps that are their configs are included in this dotfiles repository
-
-1. [Neovim](https://neovim.io/)
-2. [Fastfetch](https://github.com/fastfetch-cli/fastfetch)
-3. [Starship](https://starship.rs/)
-4. [Tmux](https://github.com/tmux/tmux/wiki)
-5. [Zellij](https://zellij.dev/)
-6. `Bash | Terminal` 😜

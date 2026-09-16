@@ -1,0 +1,285 @@
+{
+  "currentThemeName": "custom",
+  "currentThemeCategory": "registry",
+  "customThemeFile": "/home/jirehn/.config/DankMaterialShell/themes/tokyoNightNightMoon/theme.json",
+  "popupTransparency": 0.88,
+  "cornerRadius": 2,
+  "hyprlandLayoutGapsOverride": 4,
+  "hyprlandLayoutGapsOutOverride": 8,
+  "hyprlandLayoutRadiusOverride": 0,
+  "hyprlandLayoutBorderSize": 1,
+  "hyprlandResizeOnBorder": true,
+  "animationSpeed": 0,
+  "reduceMotion": true,
+  "animationVariant": 1,
+  "foregroundLayerTransparency": 0.02,
+  "blurBorderColor": "custom",
+  "blurBorderCustomColor": "#407896",
+  "controlCenterWidgets": [
+    {
+      "id": "volumeSlider",
+      "enabled": true,
+      "width": 50
+    },
+    {
+      "id": "brightnessSlider",
+      "enabled": true,
+      "width": 50
+    },
+    {
+      "id": "wifi",
+      "enabled": true,
+      "width": 50
+    },
+    {
+      "id": "bluetooth",
+      "enabled": true,
+      "width": 50
+    },
+    {
+      "id": "audioOutput",
+      "enabled": true,
+      "width": 50
+    },
+    {
+      "id": "audioInput",
+      "enabled": true,
+      "width": 50
+    },
+    {
+      "id": "nightMode",
+      "enabled": true,
+      "width": 50
+    },
+    {
+      "id": "darkMode",
+      "enabled": true,
+      "width": 50
+    },
+    {
+      "id": "doNotDisturb",
+      "enabled": true,
+      "width": 50
+    },
+    {
+      "id": "idleInhibitor",
+      "enabled": true,
+      "width": 50
+    }
+  ],
+  "showWorkspaceName": true,
+  "appIdSubstitutions": [],
+  "appLauncherGridColumns": 8,
+  "rememberLastQuery": true,
+  "appDrawerSectionViewModes": {
+    "apps": "grid"
+  },
+  "dankLauncherV2UnloadOnClose": true,
+  "dankLauncherV2IncludeFilesInAll": true,
+  "launcherUseOverlayLayer": true,
+  "launcherStyle": "island",
+  "keybindsFloatingWindow": true,
+  "networkPreference": "wifi",
+  "iconThemeDark": "Yaru",
+  "cursorSettings": {
+    "theme": "System Default",
+    "size": 24,
+    "niri": {
+      "hideWhenTyping": false,
+      "hideAfterInactiveMs": 0
+    },
+    "hyprland": {
+      "hideOnKeyPress": false,
+      "hideOnTouch": false,
+      "inactiveTimeout": 0
+    },
+    "mango": {
+      "cursorHideTimeout": 0
+    }
+  },
+  "launcherLogoMode": "os",
+  "textRenderType": 1,
+  "notepadShowLineNumbers": true,
+  "notepadAutoSave": true,
+  "notepadTransparencyOverride": 0.39,
+  "notepadLastCustomTransparency": 0.39,
+  "loginctlLockIntegration": false,
+  "fadeToLockEnabled": false,
+  "fadeToDpmsEnabled": false,
+  "dockSeparatePinnedAndRunningApps": true,
+  "dockIndicatorStyle": "line",
+  "lockScreenShowSystemIcons": false,
+  "lockScreenShowTime": false,
+  "lockScreenShowDate": false,
+  "lockScreenShowWeather": false,
+  "osdPowerProfileEnabled": true,
+  "powerMenuActions": [
+    "reboot",
+    "logout",
+    "poweroff",
+    "lock",
+    "suspend",
+    "restart",
+    "switchuser",
+    "hibernate",
+    "softreboot"
+  ],
+  "displayProfileAutoSelect": true,
+  "displayShowDisconnected": true,
+  "barConfigs": [
+    {
+      "id": "default",
+      "name": "Main Bar",
+      "enabled": true,
+      "position": 0,
+      "screenPreferences": [
+        "all"
+      ],
+      "showOnLastDisplay": true,
+      "leftWidgets": [
+        "launcherButton",
+        "workspaceSwitcher"
+      ],
+      "centerWidgets": [
+        "music",
+        {
+          "id": "clock",
+          "enabled": true
+        },
+        {
+          "id": "privacyIndicator",
+          "enabled": true
+        }
+      ],
+      "rightWidgets": [
+        "systemTray",
+        {
+          "id": "network_speed_monitor",
+          "enabled": true
+        },
+        "clipboard",
+        {
+          "id": "cpuUsage",
+          "enabled": true
+        },
+        {
+          "id": "memUsage",
+          "enabled": true
+        },
+        "notificationButton",
+        "controlCenterButton",
+        "battery"
+      ],
+      "spacing": 0,
+      "innerPadding": -8,
+      "barInsetPadding": -1,
+      "barLengthPadding": 0,
+      "bottomGap": 0,
+      "attachToScreenEdge": false,
+      "transparency": 0.47,
+      "widgetTransparency": 0,
+      "squareCorners": true,
+      "noBackground": false,
+      "maximizeWidgetIcons": false,
+      "maximizeWidgetText": false,
+      "removeWidgetPadding": false,
+      "widgetPadding": 6,
+      "batteryColorMode": "level",
+      "gothCornersEnabled": false,
+      "gothCornerRadiusOverride": false,
+      "gothCornerRadiusValue": 35,
+      "borderEnabled": false,
+      "borderColor": "surfaceText",
+      "borderOpacity": 1,
+      "borderThickness": 1,
+      "widgetOutlineEnabled": true,
+      "widgetOutlineColor": "primary",
+      "widgetOutlineOpacity": 0.25,
+      "widgetOutlineThickness": 1,
+      "fontScale": 1.08,
+      "iconScale": 1.09,
+      "autoHide": false,
+      "autoHideStrict": false,
+      "autoHideDelay": 250,
+      "showOnWindowsOpen": false,
+      "openOnOverview": false,
+      "visible": true,
+      "popupGapsAuto": true,
+      "popupGapsManual": 4,
+      "maximizeDetection": true,
+      "useOverlayLayer": false,
+      "scrollEnabled": true,
+      "scrollXBehavior": "column",
+      "scrollYBehavior": "workspace",
+      "shadowIntensity": 0,
+      "shadowOpacity": 60,
+      "shadowColorMode": "default",
+      "shadowCustomColor": "#000000",
+      "clickThrough": false,
+      "hoverPopouts": false,
+      "hoverPopoutDelay": 150,
+      "islandReserveThickness": 24
+    }
+  ],
+  "desktopClockCustomColor": {
+    "r": 1,
+    "g": 1,
+    "b": 1,
+    "a": 1,
+    "hsvHue": -1,
+    "hsvSaturation": 0,
+    "hsvValue": 1,
+    "hslHue": -1,
+    "hslSaturation": 0,
+    "hslLightness": 1,
+    "valid": true
+  },
+  "systemMonitorCustomColor": {
+    "r": 1,
+    "g": 1,
+    "b": 1,
+    "a": 1,
+    "hsvHue": -1,
+    "hsvSaturation": 0,
+    "hsvValue": 1,
+    "hslHue": -1,
+    "hslSaturation": 0,
+    "hslLightness": 1,
+    "valid": true
+  },
+  "desktopWidgetInstances": [
+    {
+      "id": "dw_1789084576218_rf34q0e96",
+      "widgetType": "desktopClock",
+      "name": "Desktop Clock",
+      "enabled": false,
+      "config": {
+        "style": "analog",
+        "transparency": 0.8,
+        "colorMode": "primary",
+        "customColor": "#ffffff",
+        "showDate": true,
+        "showAnalogNumbers": false,
+        "showAnalogSeconds": true,
+        "displayPreferences": [
+          "all"
+        ]
+      }
+    }
+  ],
+  "builtInPluginSettings": {
+    "dms_settings_search": {
+      "trigger": "?"
+    },
+    "dms_clipboard_search": {
+      "trigger": "cb"
+    },
+    "dms_power": {
+      "trigger": "pw"
+    },
+    "dms_qr_generator": {
+      "trigger": "qrg"
+    }
+  },
+  "configVersion": 18
+}

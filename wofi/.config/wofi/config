@@ -1,0 +1,15 @@
+show=drun
+width=450
+height=350
+prompt=Search…
+normal_window=true
+layer=top
+allow_images=true
+image_size=24
+insensitive=true
+allow_markup=true
+hide_scroll=true
+no_actions=true
+matching=contains
+sort_order=alphabetical
+gtk_dark=true
