@@ -18,6 +18,8 @@
     },
     "modules": [
         "break",
+
+        // ──────────────────── Hardware ────────────────────
         {
             "type": "custom",
             "format": "\u001b[90m┌──────────────────────\u001b[1;32mHardware\u001b[0;90m──────────────────────┐"
@@ -28,38 +30,69 @@
             "keyColor": "green"
         },
         {
+            "type": "board",
+            "key": "│ ├󰚗 ",
+            "keyColor": "green"
+        },
+        {
+            "type": "chassis",
+            "key": "│ ├󰇺 ",
+            "keyColor": "green"
+        },
+        {
             "type": "cpu",
             "key": "│ ├󰻠 ",
-            "keyColor": "green"
+            "keyColor": "green",
+            "format": "{name} ({cores-physical}C/{cores-logical}T) @ {freq-max}"
+        },
+        {
+            "type": "cpuusage",
+            "key": "│ │ ├󰓅 ",
+            "keyColor": "green",
+            "format": "{percentage}"
         },
         {
             "type": "gpu",
             "key": "│ ├󰍹 ",
-            "keyColor": "green"
+            "keyColor": "green",
+            "format": "{name} ({vram-used} / {vram-total})"
         },
         {
             "type": "memory",
             "key": "│ ├󰑭 ",
             "keyColor": "green",
-            "format": "{1} / {2} ({3})"
+            "format": "{used} / {total} ({percentage})"
+        },
+        {
+            "type": "swap",
+            "key": "│ │ ├󰓡 ",
+            "keyColor": "green",
+            "format": "{used} / {total} ({percentage})"
         },
         {
             "type": "disk",
             "key": "│ ├󰋊 ",
             "keyColor": "green",
-            "format": "{1} / {2} ({3})"
+            "format": "{size-used} / {size-total} ({size-percentage}) - {mountpoint}"
         },
         {
             "type": "battery",
-            "key": "└ └󰁹 ",
+            "key": "│ ├󰁹 ",
             "keyColor": "green",
-            "format": "{4}% [{5}]"
+            "format": "{capacity}% [{status}]"
+        },
+        {
+            "type": "poweradapter",
+            "key": "└ └󰚥 ",
+            "keyColor": "green"
         },
         {
             "type": "custom",
             "format": "\u001b[90m└────────────────────────────────────────────────────┘"
         },
         "break",
+
+        // ──────────────────── Software ────────────────────
         {
             "type": "custom",
             "format": "\u001b[90m┌──────────────────────\u001b[1;33mSoftware\u001b[0;90m──────────────────────┐"
@@ -77,11 +110,22 @@
         {
             "type": "packages",
             "key": "│ ├󰏗 ",
-            "keyColor": "yellow"
+            "keyColor": "yellow",
+            "format": "{all}"
         },
         {
             "type": "shell",
-            "key": "└ └󰞷 ",
+            "key": "│ ├󰞷 ",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "initsystem",
+            "key": "│ ├󰚥 ",
+            "keyColor": "yellow"
+        },
+        {
+            "type": "editor",
+            "key": "└ └󰷈 ",
             "keyColor": "yellow"
         },
         {
@@ -89,6 +133,8 @@
             "format": "\u001b[90m└────────────────────────────────────────────────────┘"
         },
         "break",
+
+        // ──────────────────── Desktop ────────────────────
         {
             "type": "custom",
             "format": "\u001b[90m┌───────────────────────\u001b[1;34mDesktop\u001b[0;90m──────────────────────┐"
@@ -104,6 +150,11 @@
             "keyColor": "blue"
         },
         {
+            "type": "wmtheme",
+            "key": "│ │ ├󰉼 ",
+            "keyColor": "blue"
+        },
+        {
             "type": "theme",
             "key": "│ ├󰉦 ",
             "keyColor": "blue"
@@ -111,6 +162,16 @@
         {
             "type": "icons",
             "key": "│ ├󰀻 ",
+            "keyColor": "blue"
+        },
+        {
+            "type": "cursor",
+            "key": "│ ├󰇀 ",
+            "keyColor": "blue"
+        },
+        {
+            "type": "font",
+            "key": "│ ├󰛖 ",
             "keyColor": "blue"
         },
         {
@@ -128,6 +189,35 @@
             "format": "\u001b[90m└────────────────────────────────────────────────────┘"
         },
         "break",
+
+        // ──────────────────── Display ────────────────────
+        {
+            "type": "custom",
+            "format": "\u001b[90m┌──────────────────────\u001b[1;35mDisplay\u001b[0;90m───────────────────────┐"
+        },
+        {
+            "type": "display",
+            "key": "󰍹 ",
+            "keyColor": "magenta",
+            "format": "{name}: {width}x{height} @ {refresh-rate}Hz"
+        },
+        {
+            "type": "brightness",
+            "key": "│ ├󰃠 ",
+            "keyColor": "magenta"
+        },
+        {
+            "type": "monitor",
+            "key": "└ └󰕮 ",
+            "keyColor": "magenta"
+        },
+        {
+            "type": "custom",
+            "format": "\u001b[90m└────────────────────────────────────────────────────┘"
+        },
+        "break",
+
+        // ──────────────────── Network ────────────────────
         {
             "type": "custom",
             "format": "\u001b[90m┌───────────────────────\u001b[1;36mNetwork\u001b[0;90m──────────────────────┐"
@@ -135,7 +225,8 @@
         {
             "type": "localip",
             "key": "󰩟 ",
-            "keyColor": "cyan"
+            "keyColor": "cyan",
+            "format": "{ipv4} ({ifname})"
         },
         {
             "type": "publicip",
@@ -144,7 +235,13 @@
         },
         {
             "type": "wifi",
-            "key": "└ └󰤨 ",
+            "key": "│ ├󰤨 ",
+            "keyColor": "cyan",
+            "format": "{ssid} ({signal-quality})"
+        },
+        {
+            "type": "dns",
+            "key": "└ └󰇧 ",
             "keyColor": "cyan"
         },
         {
@@ -152,6 +249,8 @@
             "format": "\u001b[90m└────────────────────────────────────────────────────┘"
         },
         "break",
+
+        // ──────────────────── Status ────────────────────
         {
             "type": "custom",
             "format": "\u001b[90m┌────────────────────────\u001b[1;35mStatus\u001b[0;90m──────────────────────┐"
@@ -160,11 +259,26 @@
             "type": "command",
             "key": "󰔚 ",
             "keyColor": "magenta",
-            "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+            "text": "birth_install=$(stat -c %W / 2>/dev/null || echo 0); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
         },
         {
             "type": "uptime",
             "key": "│ ├󰅐 ",
+            "keyColor": "magenta"
+        },
+        {
+            "type": "loadavg",
+            "key": "│ ├󰓅 ",
+            "keyColor": "magenta"
+        },
+        {
+            "type": "processes",
+            "key": "│ ├󰒓 ",
+            "keyColor": "magenta"
+        },
+        {
+            "type": "users",
+            "key": "│ ├󰀄 ",
             "keyColor": "magenta"
         },
         {
@@ -178,6 +292,8 @@
             "format": "\u001b[90m└────────────────────────────────────────────────────┘"
         },
         "break",
+
+        // Colors
         {
             "type": "colors",
             "paddingLeft": 16,

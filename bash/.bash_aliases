@@ -20,16 +20,7 @@ alias des="cd $HOME/Desktop"
 alias ze="zellij"
 alias dev="cd $HOME/development"
 alias down="cd $HOME/Downloads"
-dotfiles() {
-  if [ -z "$1" ]; then
-    nvim "$HOME/dotfiles"
-  elif [ -d "$HOME/dotfiles/$1/.config/$1" ]; then
-    nvim "$HOME/dotfiles/$1/.config/$1"
-  else
-    nvim "$HOME/dotfiles/$1"
-  fi
-}
-alias shut="poweroff"
+alias shut="sudo poweroff"
 alias e="exit"
 alias gc="git commit -m"
 alias ga="git add"
@@ -53,3 +44,5 @@ restartTouchpad() {
 alias pms="cd $HOME/development/OSTA_PMS"
 alias mereb="cd $HOME/development/Mereb/"
 alias upg="sudo apt update && sudo apt upgrade -y"
+export EDITOR="nvim"
+export VISUAL="nvim"
