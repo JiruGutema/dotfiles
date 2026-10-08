@@ -34,7 +34,7 @@ alias hibernate="sudo systemctl hibernate"
 alias deleteRemote="git push origin --delete"
 alias deleteLocal="git branch -D"
 alias gitrev="git reset --soft HEAD~1"
-
+alias agy="agy --dangerously-skip-permissions"
 restartTouchpad() {
   sudo modprobe -r hid_multitouch
   sudo modprobe -r i2c_hid_acpi
