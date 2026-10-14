@@ -1,0 +1,56 @@
+# jrun configuration file
+# Written by jrun; hand edits are preserved in meaning, not in layout.
+
+[search]
+roots = [
+    "~/development",
+    "~/thirdparty",
+    "~/Documents",
+    "~/projects",
+    "~/dotfiles",
+    "~"
+]
+
+# Directory names never descended into.
+ignore = [
+    ".git",
+    ".hg",
+    ".svn",
+    "node_modules",
+    "__pycache__",
+    ".cache",
+    ".cargo",
+    ".rustup",
+    ".npm",
+    ".venv",
+    "vendor"
+]
+max_depth = 4
+follow_symlinks = false
+# Seconds a cached directory index stays usable. 0 rescans every time.
+cache_ttl = 300
+
+[behavior]
+fuzzy = true
+interactive = true
+# Rank directories holding a project marker (.git, Cargo.toml, ...) higher.
+prefer_projects = true
+frecency_threshold = 2.00
+
+[safety]
+# Prompt before running these commands in a resolved directory.
+# Set confirm = false to disable prompts, or pass -y / --yes.
+confirm = true
+commands = [
+    "rm",
+    "rmdir",
+    "mv",
+    "unlink",
+    "shred",
+    "dd",
+    "mkfs",
+    "wipefs",
+    "chmod",
+    "chown",
+    "truncate"
+]

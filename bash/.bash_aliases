@@ -46,3 +46,8 @@ alias mereb="cd $HOME/development/Mereb/"
 alias upg="sudo apt update && sudo apt upgrade -y"
 export EDITOR="nvim"
 export VISUAL="nvim"
+
+# Automatically start tmux
+if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ] && [[ $- == *i* ]]; then
+    tmux new-session -A -s main
+fi
