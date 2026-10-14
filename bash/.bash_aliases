@@ -44,6 +44,7 @@ restartTouchpad() {
 alias pms="cd $HOME/development/OSTA_PMS"
 alias mereb="cd $HOME/development/Mereb/"
 alias upg="sudo apt update && sudo apt upgrade -y"
+alias nest-gnome=" cat ~/dotfiles/scripts/nest-gnome-shell.sh | bash"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
